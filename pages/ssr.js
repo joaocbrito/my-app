@@ -6,6 +6,8 @@ export const config = {
 };
 
 const Home = ({ runtime, results }) => {
+  console.log(results);
+
   return (
     <div className={styles.container}>
       <a href="https://nextjs.org">Next.js, running at the {runtime}!</a>
@@ -28,14 +30,14 @@ const Home = ({ runtime, results }) => {
 };
 
 export const getServerSideProps = async () => {
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const data = await response.json();
+  const results = data.results;
+
   return {
     props: {
       runtime: process.env.NEXT_RUNTIME,
-      results: await fetch("https://rickandmortyapi.com/api/character")
-        .then((response) => response.json())
-        .then((data) => {
-          return data.data.results;
-        }),
+      results,
     },
   };
 };
