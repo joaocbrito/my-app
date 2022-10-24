@@ -10,7 +10,7 @@ const Home = ({ runtime, results }) => {
 
   return (
     <div className={styles.container}>
-      <a href="https://nextjs.org">Next.js, running at the {runtime}!</a>
+      {/* <a href="https://nextjs.org">Next.js, running at the {runtime}!</a> */}
       <div className={styles.itens}>
         {results.map((result) => (
           <div key={result.id} className={styles.item}>
@@ -19,7 +19,7 @@ const Home = ({ runtime, results }) => {
               src={result.image}
               width="200"
               height="200"
-              alt={`nome`}
+              alt={`Imagem do personagem ${result.name}`}
             />
             <p>{result.name}</p>
           </div>
