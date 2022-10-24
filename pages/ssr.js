@@ -1,30 +1,27 @@
-// ./pages/ssr.tsx
-
 import styles from "../styles/Home.module.css";
 
 export const config = {
   runtime: "experimental-edge",
 };
 
-const Home = ({ runtime, uuid }) => {
+const Home = ({ runtime, results }) => {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to{" "}
-          <a href="https://nextjs.org">Next.js, running at the {runtime}!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <p className={styles.description}>
-          Here&apos;s a server-side UUID:
-          <code className={styles.code}>{uuid}</code>
-        </p>
-      </main>
+      <a href="https://nextjs.org">Next.js, running at the {runtime}!</a>
+      <div className={styles.itens}>
+        {results.map((result) => (
+          <div key={result.id} className={styles.item}>
+            <Image
+              className={styles.img}
+              src={result.image}
+              width="200"
+              height="200"
+              alt={`nome`}
+            />
+            <p>{result.name}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -33,9 +30,11 @@ export const getServerSideProps = async () => {
   return {
     props: {
       runtime: process.env.NEXT_RUNTIME,
-      uuid: await fetch("https://uuid.rocks/plain").then((response) =>
-        response.text()
-      ),
+      results: await fetch("https://rickandmortyapi.com/api/character")
+        .then((response) => response.json())
+        .then((data) => {
+          return data.data.results;
+        }),
     },
   };
 };

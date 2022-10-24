@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ runtime, results }) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <a href="https://nextjs.org">Next.js, running at the {runtime}!</a>
@@ -24,13 +24,18 @@ export default function Home({ runtime, results }) {
 }
 
 export const getServerSideProps = async () => {
-  const response = await axios.get("https://rickandmortyapi.com/api/character");
-  const { results } = response.data;
+    const response = await axios.get(
+      "https://rickandmortyapi.com/api/character"
+    );
 
+
+    
   return {
     props: {
       runtime: process.env.NEXT_RUNTIME,
-      results,
+      uuid: await fetch("https://uuid.rocks/plain").then((response) =>
+        response.text()
+      ),
     },
   };
 };
