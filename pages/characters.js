@@ -6,8 +6,6 @@ export const config = {
 };
 
 const Characters = ({ runtime, results }) => {
-  console.log(results);
-
   return (
     <div className={styles.container}>
       {/* <a href="https://nextjs.org">Next.js, running at the {runtime}!</a> */}
@@ -19,7 +17,7 @@ const Characters = ({ runtime, results }) => {
               src={result.image}
               width="200"
               height="200"
-              alt={`Imagem do(a) personagem ${result.name}`}
+              alt=""
             />
             <p>{result.name}</p>
           </div>
