@@ -1,11 +1,11 @@
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Characters.module.css";
 
 export const config = {
   runtime: "experimental-edge",
 };
 
-const Home = ({ runtime, results }) => {
+const Characters = ({ runtime, results }) => {
   console.log(results);
 
   return (
@@ -19,7 +19,7 @@ const Home = ({ runtime, results }) => {
               src={result.image}
               width="200"
               height="200"
-              alt={`Imagem do personagem ${result.name}`}
+              alt={`Imagem do(a) personagem ${result.name}`}
             />
             <p>{result.name}</p>
           </div>
