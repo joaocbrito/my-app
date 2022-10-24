@@ -24,12 +24,6 @@ export default function Home() {
 }
 
 export const getServerSideProps = async () => {
-    const response = await axios.get(
-      "https://rickandmortyapi.com/api/character"
-    );
-
-
-    
   return {
     props: {
       runtime: process.env.NEXT_RUNTIME,
