@@ -2,6 +2,8 @@
   background-color: #012127;
 
   padding: 100px 40px;
+
+  min-height: 100vh;
 }
 
 .container .itens {
