@@ -5,6 +5,9 @@ const nextConfig = {
   experimental: {
     runtime: "experimental-edge",
   },
+  images: {
+    domains: ["rickandmortyapi.com"],
+  },
 };
 
 module.exports = nextConfig;
