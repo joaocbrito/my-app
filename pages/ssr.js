@@ -1,16 +1,12 @@
 // ./pages/ssr.tsx
 
-import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 
 export const config = {
   runtime: "experimental-edge",
 };
 
-const Home: NextPage<{ runtime: string; uuid: string }> = ({
-  runtime,
-  uuid,
-}) => {
+const Home = ({ runtime, uuid }) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
