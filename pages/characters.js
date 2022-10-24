@@ -42,4 +42,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default Home;
+export default Characters;
