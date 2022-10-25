@@ -5,6 +5,19 @@ export const config = {
   runtime: "experimental-edge",
 };
 
+const normalizeSrc = (src) => {
+  return src.startsWith("/") ? src.slice(1) : src;
+};
+
+const cloudflareLoader = ({ src, width, quality }) => {
+  const params = [`width=${width}`];
+  if (quality) {
+    params.push(`quality=${quality}`);
+  }
+  const paramsString = params.join(",");
+  return `/cdn-cgi/image/${paramsString}/${normalizeSrc(src)}`;
+};
+
 const Characters = ({ runtime, results }) => {
   return (
     <div className={styles.container}>
@@ -13,6 +26,7 @@ const Characters = ({ runtime, results }) => {
         {results.map((result) => (
           <div key={result.id} className={styles.item}>
             <Image
+              loader={cloudflareLoader}
               className={styles.img}
               src={result.image}
               width="200"
