@@ -7,7 +7,7 @@ const nextConfig = {
   },
   images: {
     domains: ["rickandmortyapi.com"],
-    loader: "akamai",
+    loader: "clouddlare",
     path: "",
   },
 };
